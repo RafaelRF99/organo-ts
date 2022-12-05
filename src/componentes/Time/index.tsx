@@ -19,9 +19,13 @@ const Time = (props: TimeProps ) => {
         (props.colaboradores.length > 0) ? <section className='time' style={fundo}>
         <h3 style={borda}>{props.nome}</h3>
         <div className='colaboradores'>
-            {props.colaboradores.map(colaborador => <Colaborador corDeFundo={props.corPrim} key={colaborador.nome} 
+            {props.colaboradores.map(colaborador => <Colaborador key={colaborador.nome} 
+            corDeFundo={props.corPrim} 
             nome={colaborador.nome}
-                cargo={colaborador.cargo} imagem={colaborador.imagem} />)}
+            cargo={colaborador.cargo} 
+            imagem={colaborador.imagem} 
+            data={colaborador.data} 
+            />)}
         </div>
     </section> : <></>
     )
