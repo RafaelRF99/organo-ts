@@ -1,4 +1,4 @@
-# Aula React: Desenvolvendo com JavaScript
+# Aula React: ReactJS
 
 ## Para iniciar o Projeto utilizar npm start
 
