@@ -1,8 +1,13 @@
+// HOOKS
 import { useState } from 'react';
 
+// COMPONENTS
 import Banner from './componentes/Banner';
 import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
+
+// SHARED
+import { IColaborador } from './shared/interfaces/IColaborador';
 
 function App() {
 
@@ -44,16 +49,16 @@ function App() {
     }
   ]
 
-  const [colaboradores, setColaboradores] = useState([]);
+  const [colaboradores, setColaboradores] = useState<IColaborador[]>([]);
 
-  const aoNovoColaboradorAdicionado = (colaborador) => {
+  const aoNovoColaboradorAdicionado = (colaborador: IColaborador) => {
     // debugger = Procurar bugs
-    setColaboradores([...colaboradores, colaborador])
+    setColaboradores([...colaboradores, colaborador]);
   }
 
   return (
     <div className="App">
-      <Banner />
+      <Banner enderecoImagem='/imagens/banner.png' textoAlternativo='Banner principal da página' />
       <Formulario times={times.map(time => time.nome)} 
       aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)} />
       {times.map(time => <Time key={time.nome} nome={time.nome} 

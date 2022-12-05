@@ -1,18 +1,30 @@
+// CSS
 import './Formulario.css'
+// HOOKS
+import { useState } from 'react'
+
+//COMPONENTS
 import Botao from '../Botao';
 import CampoTexto from '../CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
-import { useState } from 'react'
 
-const Formulario = (props) => {
+// SHARED
+import { IColaborador } from '../../shared/interfaces/IColaborador';
+
+interface FormularioProps {
+    aoColaboradorCadastrado: (colaborador: IColaborador) => void
+    times: string[]
+}
+
+const Formulario = (props: FormularioProps) => {
 
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
     const [imagem, setImagem] = useState('')
     const [time, setTime] = useState('')
 
-    const aoSalvar = (evento) => {
-        evento.preventDefault(); //Renderização da Página
+    const aoSalvar = (evento: React.FormEvent<HTMLFormElement>) => {
+        evento.preventDefault();
         props.aoColaboradorCadastrado({
             nome,
             cargo,
@@ -45,9 +57,7 @@ const Formulario = (props) => {
                     valor={time}
                     aoAlterado={valor => setTime(valor)}
                 />
-                <Botao>
-                    Criar Card
-                </Botao>
+                <Botao>Criar Card</Botao>
             </form>
         </section>
     );
